@@ -21,7 +21,7 @@ export default function TicketModal({ prize, isOpen, onClose }: TicketModalProps
   const handlePurchase = async () => {
     setLoading(true);
     try {
-      const response = await fetch('/api/tickets/purchase', {
+      const response = await fetch('/api/payments/initiate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -32,15 +32,33 @@ export default function TicketModal({ prize, isOpen, onClose }: TicketModalProps
       });
 
       const data = await response.json();
+
       if (data.success) {
-        alert('Ticket purchase initiated! Please complete payment.');
-        onClose();
+        // Redirect to payment gateway
+        const gateway = data.data.paymentGateway;
+
+        // Create form and submit to payment gateway
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = gateway.url;
+
+        // Add all payment data as hidden inputs
+        Object.entries(gateway.data).forEach(([key, value]) => {
+          const input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = key;
+          input.value = value as string;
+          form.appendChild(input);
+        });
+
+        document.body.appendChild(form);
+        form.submit();
       } else {
         alert('Purchase failed: ' + data.error);
+        setLoading(false);
       }
     } catch (error) {
       alert('Something went wrong. Please try again.');
-    } finally {
       setLoading(false);
     }
   };
