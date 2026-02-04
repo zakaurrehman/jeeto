@@ -1,0 +1,111 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String   @id @default(cuid())
+  clerkId       String   @unique
+  email         String?  @unique
+  phone         String?  @unique
+  name          String?
+  imageUrl      String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  tickets       Ticket[]
+  transactions  Transaction[]
+  wonPrizes     Prize[]       @relation("PrizeWinner")
+}
+
+model Prize {
+  id            String   @id @default(cuid())
+  name          String
+  description   String
+  imageUrl      String
+  marketValue   Int
+  ticketPrice   Int
+  totalTickets  Int
+  soldTickets   Int      @default(0)
+  drawDate      DateTime
+  status        PrizeStatus @default(ACTIVE)
+  category      String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  tickets       Ticket[]
+  winnerId      String?
+  winner        User?    @relation("PrizeWinner", fields: [winnerId], references: [id])
+
+  @@index([status])
+  @@index([drawDate])
+}
+
+model Ticket {
+  id            String   @id @default(cuid())
+  ticketNumber  String   @unique
+  quantity      Int      @default(1)
+  totalPrice    Int
+  purchaseDate  DateTime @default(now())
+  paymentStatus PaymentStatus @default(PENDING)
+
+  userId        String
+  user          User     @relation(fields: [userId], references: [id])
+
+  prizeId       String
+  prize         Prize    @relation(fields: [prizeId], references: [id])
+
+  transaction   Transaction?
+
+  @@index([userId])
+  @@index([prizeId])
+  @@index([paymentStatus])
+}
+
+model Transaction {
+  id              String   @id @default(cuid())
+  amount          Int
+  paymentMethod   PaymentMethod
+  paymentGateway  String?
+  gatewayOrderId  String?  @unique
+  gatewayPaymentId String?
+  status          PaymentStatus @default(PENDING)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  userId          String
+  user            User     @relation(fields: [userId], references: [id])
+
+  ticketId        String   @unique
+  ticket          Ticket   @relation(fields: [ticketId], references: [id])
+
+  @@index([userId])
+  @@index([status])
+}
+
+enum PrizeStatus {
+  ACTIVE
+  CLOSED
+  DRAWN
+  CANCELLED
+}
+
+enum PaymentStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  REFUNDED
+}
+
+enum PaymentMethod {
+  JAZZCASH
+  EASYPAISA
+  VISA
+  MASTERCARD
+  APPLEPAY
+}

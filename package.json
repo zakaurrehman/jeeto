@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/nextjs": "^6.37.2",
+    "@prisma/client": "^7.3.0",
     "@tailwindcss/postcss": "^4.1.18",
     "@types/node": "^25.2.0",
     "@types/react": "^19.2.10",
@@ -16,6 +18,7 @@
     "autoprefixer": "^10.4.24",
     "next": "^16.1.6",
     "postcss": "^8.5.6",
+    "prisma": "^7.3.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "tailwindcss": "^4.1.18",
