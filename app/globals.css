@@ -1,23 +1,56 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #0a1628;
+  --color-navy-dark: #050b14;
+  --color-navy-light: #1a2638;
+  --color-pakistan-green: #01411C;
+  --color-pakistan-green-light: #02552a;
+  --color-gold: #D4AF37;
+  --color-gold-light: #E5C158;
+  --color-gold-dark: #B8941F;
+}
 
 @layer base {
   body {
-    @apply bg-navy text-white antialiased;
+    background-color: var(--color-navy);
+    color: white;
+    -webkit-font-smoothing: antialiased;
   }
 }
 
 @layer utilities {
   .text-gradient {
-    @apply bg-gradient-to-r from-gold to-gold-light bg-clip-text text-transparent;
+    background: linear-gradient(to right, var(--color-gold), var(--color-gold-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
   .card-premium {
-    @apply bg-navy-light rounded-2xl border border-gold/20 shadow-soft hover:shadow-gold transition-all duration-300;
+    background-color: var(--color-navy-light);
+    border-radius: 1rem;
+    border: 1px solid rgb(212 175 55 / 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s;
+  }
+
+  .card-premium:hover {
+    border-color: rgb(212 175 55 / 0.4);
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
   }
 
   .btn-gold {
-    @apply bg-gradient-to-r from-gold to-gold-light text-navy font-semibold px-6 py-3 rounded-lg hover:shadow-gold transition-all duration-300 hover:scale-105;
+    background: linear-gradient(to right, var(--color-gold), var(--color-gold-light));
+    color: var(--color-navy);
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s;
+  }
+
+  .btn-gold:hover {
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+    transform: scale(1.05);
   }
 }
