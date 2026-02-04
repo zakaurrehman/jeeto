@@ -1,15 +1,18 @@
+import Link from 'next/link';
+import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
+
 export default function Header() {
   return (
     <header className="border-b border-gold/20 bg-navy/95 backdrop-blur-sm sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2">
             <h1 className="text-3xl font-bold">
               <span className="text-gradient">jeeto</span>
               <span className="text-pakistan-green">.pk</span>
             </h1>
-          </div>
+          </Link>
 
           {/* Trust Badges */}
           <div className="hidden md:flex items-center gap-6 text-sm">
@@ -34,10 +37,22 @@ export default function Header() {
             </div>
           </div>
 
-          {/* CTA Button */}
-          <button className="btn-gold text-sm px-4 py-2">
-            My Tickets
-          </button>
+          {/* Auth Buttons */}
+          <div className="flex items-center gap-4">
+            <SignedIn>
+              <Link href="/dashboard" className="text-sm text-gray-300 hover:text-gold transition-colors">
+                My Tickets
+              </Link>
+              <UserButton />
+            </SignedIn>
+            <SignedOut>
+              <SignInButton mode="modal">
+                <button className="btn-gold text-sm px-4 py-2">
+                  Sign In
+                </button>
+              </SignInButton>
+            </SignedOut>
+          </div>
         </div>
       </div>
     </header>
