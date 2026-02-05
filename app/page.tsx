@@ -4,6 +4,7 @@ import PrizeCard from '@/components/PrizeCard';
 import Testimonial from '@/components/Testimonial';
 import { testimonials } from '@/lib/mockData';
 import { prisma } from '@/lib/prisma';
+import { Prize } from '@/types';
 
 async function getPrizes() {
   const prizes = await prisma.prize.findMany({
@@ -34,7 +35,13 @@ async function getPrizes() {
 }
 
 export default async function Home() {
-  const prizes = await getPrizes();
+  let prizes: Prize[] = [];
+  try {
+    prizes = await getPrizes();
+  } catch (error) {
+    console.error('Error fetching prizes:', error);
+  }
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -71,11 +78,18 @@ export default async function Home() {
 
         {/* Prize Cards Grid */}
         <section className="container mx-auto px-4 py-6 sm:py-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6">
-            {prizes.map((prize) => (
-              <PrizeCard key={prize.id} prize={prize} />
-            ))}
-          </div>
+          {prizes.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6">
+              {prizes.map((prize) => (
+                <PrizeCard key={prize.id} prize={prize} />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-gray-400 text-lg mb-4">No active prizes at the moment</p>
+              <p className="text-gray-500 text-sm">Check back soon for exciting prizes!</p>
+            </div>
+          )}
         </section>
 
         {/* Testimonials Section */}
