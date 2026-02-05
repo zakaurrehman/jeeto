@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { requireAdmin } from '@/lib/admin';
 import { prisma } from '@/lib/prisma';
+import { sendWinnerNotification } from '@/lib/email';
 
 export async function POST(request: NextRequest) {
   try {
@@ -81,6 +82,22 @@ export async function POST(request: NextRequest) {
     // Get winner details
     const winningTicket = prize.tickets.find((t) => t.id === winner.ticketId);
     const winnerUser = winningTicket?.user;
+
+    // Send email notification to winner
+    if (winnerUser?.email && winnerUser?.name && winningTicket?.ticketNumber) {
+      try {
+        await sendWinnerNotification(
+          winnerUser.email,
+          winnerUser.name,
+          prize.name,
+          winningTicket.ticketNumber,
+          prize.drawDate
+        );
+      } catch (emailError) {
+        console.error('Failed to send winner notification email:', emailError);
+        // Don't fail the draw if email fails - just log it
+      }
+    }
 
     return NextResponse.json({
       success: true,
