@@ -27,14 +27,25 @@ export default async function DashboardPage() {
     redirect('/sign-in');
   }
 
-  const user = await getUserTickets(userId);
+  let user = await getUserTickets(userId);
 
+  // If user doesn't exist in database, create them
   if (!user) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-400">Loading...</p>
-      </div>
-    );
+    user = await prisma.user.create({
+      data: {
+        clerkId: userId,
+        email: '', // Will be updated by webhook later
+      },
+      include: {
+        tickets: {
+          include: {
+            prize: true,
+            transaction: true,
+          },
+          orderBy: { purchaseDate: 'desc' },
+        },
+      },
+    });
   }
 
   return (
