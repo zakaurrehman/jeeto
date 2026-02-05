@@ -1,4 +1,4 @@
-import { auth } from '@clerk/nextjs/server';
+import { auth, currentUser } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
 import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
@@ -31,10 +31,17 @@ export default async function DashboardPage() {
 
   // If user doesn't exist in database, create them
   if (!user) {
+    const clerkUser = await currentUser();
+    const email = clerkUser?.emailAddresses[0]?.emailAddress || null;
+
     user = await prisma.user.create({
       data: {
         clerkId: userId,
-        email: '', // Will be updated by webhook later
+        email: email,
+        name: clerkUser?.firstName && clerkUser?.lastName
+          ? `${clerkUser.firstName} ${clerkUser.lastName}`
+          : clerkUser?.username || null,
+        imageUrl: clerkUser?.imageUrl || null,
       },
       include: {
         tickets: {
