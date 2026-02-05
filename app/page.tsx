@@ -2,9 +2,39 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PrizeCard from '@/components/PrizeCard';
 import Testimonial from '@/components/Testimonial';
-import { prizes, testimonials } from '@/lib/mockData';
+import { testimonials } from '@/lib/mockData';
+import { prisma } from '@/lib/prisma';
 
-export default function Home() {
+async function getPrizes() {
+  const prizes = await prisma.prize.findMany({
+    where: { status: 'ACTIVE' },
+    orderBy: { createdAt: 'desc' },
+    include: {
+      _count: {
+        select: { tickets: true },
+      },
+    },
+  });
+
+  // Map to match Prize type and include buyersCount
+  return prizes.map((prize) => ({
+    id: prize.id,
+    name: prize.name,
+    description: prize.description,
+    imageUrl: prize.imageUrl,
+    marketValue: prize.marketValue,
+    ticketPrice: prize.ticketPrice,
+    totalTickets: prize.totalTickets,
+    soldTickets: prize.soldTickets,
+    buyersCount: prize._count.tickets,
+    drawDate: prize.drawDate.toISOString(),
+    status: prize.status.toLowerCase() as 'active' | 'closed' | 'drawn',
+    category: prize.category as 'tech' | 'car' | 'luxury',
+  }));
+}
+
+export default async function Home() {
+  const prizes = await getPrizes();
   return (
     <div className="min-h-screen">
       <Header />
