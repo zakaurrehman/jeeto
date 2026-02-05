@@ -58,37 +58,38 @@ export default async function DashboardPage() {
   return (
     <div className="min-h-screen bg-navy">
       {/* Header */}
-      <header className="border-b border-gold/20 bg-navy-dark">
-        <div className="container mx-auto px-4 py-4">
+      <header className="border-b border-gold/20 bg-navy-dark shadow-lg">
+        <div className="container mx-auto px-4 py-3 md:py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold">
+            <h1 className="text-xl sm:text-2xl font-bold">
               <span className="text-gradient">My</span>
               <span className="text-pakistan-green"> Dashboard</span>
             </h1>
-            <Link href="/" className="text-sm text-gray-400 hover:text-white transition-colors">
-              ← Back to Home
+            <Link href="/" className="text-xs sm:text-sm text-gray-400 hover:text-white transition-colors">
+              <span className="hidden sm:inline">← Back to Home</span>
+              <span className="sm:hidden">← Back</span>
             </Link>
           </div>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-6 sm:py-8">
         {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-navy-light rounded-xl border border-gold/20 p-6">
-            <h3 className="text-gray-400 text-sm mb-2">Total Tickets</h3>
-            <p className="text-3xl font-bold text-gold">{user.tickets.length}</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
+          <div className="bg-navy-light rounded-xl border border-gold/20 p-4 sm:p-6 hover:border-gold/40 transition-all">
+            <h3 className="text-gray-400 text-xs sm:text-sm mb-2">Total Tickets</h3>
+            <p className="text-2xl sm:text-3xl font-bold text-gold">{user.tickets.length}</p>
           </div>
-          <div className="bg-navy-light rounded-xl border border-gold/20 p-6">
-            <h3 className="text-gray-400 text-sm mb-2">Active Tickets</h3>
-            <p className="text-3xl font-bold">
+          <div className="bg-navy-light rounded-xl border border-gold/20 p-4 sm:p-6 hover:border-gold/40 transition-all">
+            <h3 className="text-gray-400 text-xs sm:text-sm mb-2">Active Tickets</h3>
+            <p className="text-2xl sm:text-3xl font-bold">
               {user.tickets.filter((t) => t.prize.status === 'ACTIVE').length}
             </p>
           </div>
-          <div className="bg-navy-light rounded-xl border border-gold/20 p-6">
-            <h3 className="text-gray-400 text-sm mb-2">Total Spent</h3>
-            <p className="text-3xl font-bold text-gold">
+          <div className="bg-navy-light rounded-xl border border-gold/20 p-4 sm:p-6 hover:border-gold/40 transition-all sm:col-span-2 lg:col-span-1">
+            <h3 className="text-gray-400 text-xs sm:text-sm mb-2">Total Spent</h3>
+            <p className="text-2xl sm:text-3xl font-bold text-gold">
               PKR{' '}
               {user.tickets
                 .filter((t) => t.paymentStatus === 'COMPLETED')
@@ -99,13 +100,13 @@ export default async function DashboardPage() {
         </div>
 
         {/* Tickets List */}
-        <div className="bg-navy-light rounded-xl border border-gold/20 p-6">
-          <h2 className="text-xl font-bold mb-6">My Tickets</h2>
+        <div className="bg-navy-light rounded-xl border border-gold/20 p-4 sm:p-6">
+          <h2 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6">My Tickets</h2>
 
           {user.tickets.length === 0 ? (
             <div className="text-center py-12">
-              <p className="text-gray-400 mb-4">You haven't purchased any tickets yet</p>
-              <Link href="/" className="btn-gold inline-block">
+              <p className="text-gray-400 mb-4 text-sm sm:text-base">You haven't purchased any tickets yet</p>
+              <Link href="/" className="btn-gold inline-block text-sm sm:text-base">
                 Browse Prizes
               </Link>
             </div>

@@ -3,19 +3,19 @@ import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 
 export default function Header() {
   return (
-    <header className="border-b border-gold/20 bg-navy/95 backdrop-blur-sm sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
+    <header className="border-b border-gold/20 bg-navy/95 backdrop-blur-sm sticky top-0 z-50 shadow-lg">
+      <div className="container mx-auto px-4 py-3 md:py-4">
+        <div className="flex items-center justify-between gap-2">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <h1 className="text-3xl font-bold">
+            <h1 className="text-2xl md:text-3xl font-bold">
               <span className="text-gradient">jeeto</span>
               <span className="text-pakistan-green">.pk</span>
             </h1>
           </Link>
 
           {/* Trust Badges */}
-          <div className="hidden md:flex items-center gap-6 text-sm">
+          <div className="hidden lg:flex items-center gap-4 xl:gap-6 text-sm">
             <div className="flex items-center gap-2">
               <svg className="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
@@ -38,16 +38,16 @@ export default function Header() {
           </div>
 
           {/* Auth Buttons */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 md:gap-4">
             <SignedIn>
-              <Link href="/dashboard" className="text-sm text-gray-300 hover:text-gold transition-colors">
+              <Link href="/dashboard" className="hidden sm:block text-xs md:text-sm text-gray-300 hover:text-gold transition-colors">
                 My Tickets
               </Link>
               <UserButton />
             </SignedIn>
             <SignedOut>
               <SignInButton mode="modal">
-                <button className="btn-gold text-sm px-4 py-2">
+                <button className="btn-gold text-xs md:text-sm px-3 md:px-4 py-2 whitespace-nowrap">
                   Sign In
                 </button>
               </SignInButton>
