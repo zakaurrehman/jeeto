@@ -131,3 +131,25 @@ enum ContactStatus {
   RESOLVED
   CLOSED
 }
+
+model Review {
+  id        String       @id @default(cuid())
+  name      String
+  email     String
+  city      String?
+  rating    Int
+  comment   String       @db.Text
+  prizeName String?
+  status    ReviewStatus @default(PENDING)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+
+  @@index([status])
+  @@index([createdAt])
+}
+
+enum ReviewStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}

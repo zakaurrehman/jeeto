@@ -7,12 +7,12 @@ export default function FAQPage() {
       category: "General",
       questions: [
         {
-          q: "What is Jeeto.pk?",
-          a: "Jeeto.pk is Pakistan's trusted lucky draw platform where you can win premium tech gadgets and luxury cars by purchasing affordable tickets. We offer transparent, Shariah-friendly draws with real prizes."
+          q: "What is Jeeto Pakistan?",
+          a: "Jeeto Pakistan is Pakistan's trusted lucky draw platform where you can win premium tech gadgets and luxury cars by purchasing affordable tickets. We offer transparent, Shariah-friendly draws with real prizes."
         },
         {
-          q: "Is Jeeto.pk legal in Pakistan?",
-          a: "Yes, Jeeto.pk operates as a legal lucky draw platform in Pakistan. Our draws are conducted transparently and follow all applicable regulations."
+          q: "Is Jeeto Pakistan legal in Pakistan?",
+          a: "Yes, Jeeto Pakistan operates as a legal lucky draw platform in Pakistan. Our draws are conducted transparently and follow all applicable regulations."
         },
         {
           q: "How do I participate?",
@@ -117,7 +117,7 @@ export default function FAQPage() {
       questions: [
         {
           q: "How can I contact customer support?",
-          a: "You can reach us through our Contact page, email us at support@jeeto.pk, or call our customer service hotline during business hours."
+          a: "You can reach us through our Contact page, email us at support@jeetopakistan.com, or call our customer service hotline during business hours."
         },
         {
           q: "What are your business hours?",
@@ -125,7 +125,7 @@ export default function FAQPage() {
         },
         {
           q: "I have a complaint. How do I report it?",
-          a: "We take all complaints seriously. Please contact us through the Contact page or email complaints@jeeto.pk with detailed information."
+          a: "We take all complaints seriously. Please contact us through the Contact page or email complaints@jeetopakistan.com with detailed information."
         }
       ]
     }
@@ -140,7 +140,7 @@ export default function FAQPage() {
           <span className="text-gradient">Frequently Asked Questions</span>
         </h1>
         <p className="text-gray-400 text-center mb-8 sm:mb-12">
-          Find answers to common questions about Jeeto.pk
+          Find answers to common questions about Jeeto Pakistan
         </p>
 
         <div className="space-y-8">

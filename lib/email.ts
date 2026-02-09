@@ -1,4 +1,4 @@
-// Email notification service for Jeeto.pk
+// Email notification service for Jeeto Pakistan
 // This uses Resend API for sending emails
 
 interface EmailOptions {
@@ -22,7 +22,7 @@ export async function sendEmail({ to, subject, html }: EmailOptions) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: process.env.EMAIL_FROM || 'Jeeto.pk <noreply@jeeto.pk>',
+        from: process.env.EMAIL_FROM || 'Jeeto Pakistan <noreply@jeetopakistan.com>',
         to,
         subject,
         html,
@@ -123,7 +123,7 @@ export function getWinnerEmailTemplate(
                   </p>
 
                   <ul style="list-style: none; padding: 0; margin: 0; color: #e5e5e5; font-size: 15px;">
-                    <li style="margin: 8px 0;">📧 Email: support@jeeto.pk</li>
+                    <li style="margin: 8px 0;">📧 Email: support@jeetopakistan.com</li>
                     <li style="margin: 8px 0;">📱 Phone: +92 300 1234567</li>
                     <li style="margin: 8px 0;">🕒 Hours: Mon-Sat, 9 AM - 6 PM</li>
                   </ul>
@@ -134,7 +134,7 @@ export function getWinnerEmailTemplate(
 
                   <p style="margin: 20px 0 0 0; color: #a0a0a0; font-size: 14px;">
                     Best regards,<br>
-                    <strong style="color: #d4af37;">The Jeeto.pk Team</strong>
+                    <strong style="color: #d4af37;">The Jeeto Pakistan Team</strong>
                   </p>
                 </td>
               </tr>
@@ -143,10 +143,10 @@ export function getWinnerEmailTemplate(
               <tr>
                 <td style="background-color: #0a0f1e; padding: 20px; text-align: center; border-top: 1px solid #d4af37;">
                   <p style="margin: 0 0 10px 0; color: #a0a0a0; font-size: 12px;">
-                    Jeeto.pk - Pakistan's Trusted Lucky Draw Platform
+                    Jeeto Pakistan - Pakistan's Trusted Lucky Draw Platform
                   </p>
                   <p style="margin: 0; color: #666; font-size: 11px;">
-                    This email was sent to you because you won a prize on Jeeto.pk
+                    This email was sent to you because you won a prize on Jeeto Pakistan
                   </p>
                 </td>
               </tr>
@@ -218,7 +218,7 @@ export function getTicketPurchaseEmailTemplate(
               <tr>
                 <td style="background-color: #0a0f1e; padding: 15px; text-align: center; border-top: 1px solid #d4af37;">
                   <p style="margin: 0; color: #a0a0a0; font-size: 12px;">
-                    Jeeto.pk - Pakistan's Trusted Lucky Draw Platform
+                    Jeeto Pakistan - Pakistan's Trusted Lucky Draw Platform
                   </p>
                 </td>
               </tr>

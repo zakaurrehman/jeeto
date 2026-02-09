@@ -190,8 +190,8 @@ export default function ContactPage() {
                   </svg>
                   <div>
                     <p className="font-semibold text-white">Email</p>
-                    <a href="mailto:support@jeeto.pk" className="text-gray-300 hover:text-gold transition-colors">
-                      support@jeeto.pk
+                    <a href="mailto:support@jeetopakistan.com" className="text-gray-300 hover:text-gold transition-colors">
+                      support@jeetopakistan.com
                     </a>
                   </div>
                 </div>

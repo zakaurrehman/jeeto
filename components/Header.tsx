@@ -8,10 +8,7 @@ export default function Header() {
         <div className="flex items-center justify-between gap-2">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <h1 className="text-2xl md:text-3xl font-bold">
-              <span className="text-gradient">jeeto</span>
-              <span className="text-pakistan-green">.pk</span>
-            </h1>
+            <img src="/images/jeetopakistan.jpeg" alt="Jeeto Pakistan" className="h-10 md:h-12 rounded" />
           </Link>
 
           {/* Trust Badges */}

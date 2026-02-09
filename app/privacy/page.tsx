@@ -18,7 +18,7 @@ export default function PrivacyPage() {
               We collect information that you provide directly to us when you:
             </p>
             <ul className="list-disc list-inside ml-4 mb-3 space-y-1">
-              <li>Create an account on Jeeto.pk</li>
+              <li>Create an account on Jeeto Pakistan</li>
               <li>Purchase tickets for lucky draws</li>
               <li>Contact our support team</li>
               <li>Subscribe to our newsletter</li>
@@ -112,7 +112,7 @@ export default function PrivacyPage() {
               <li>Object to processing of your data</li>
             </ul>
             <p className="mb-3">
-              To exercise these rights, please contact us at privacy@jeeto.pk.
+              To exercise these rights, please contact us at privacy@jeetopakistan.com.
             </p>
           </section>
 
@@ -146,8 +146,8 @@ export default function PrivacyPage() {
               If you have any questions or concerns about this Privacy Policy, please contact us:
             </p>
             <ul className="list-none ml-4 mb-3 space-y-1">
-              <li>Email: privacy@jeeto.pk</li>
-              <li>Support: support@jeeto.pk</li>
+              <li>Email: privacy@jeetopakistan.com</li>
+              <li>Support: support@jeetopakistan.com</li>
             </ul>
           </section>
 

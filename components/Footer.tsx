@@ -13,7 +13,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* About Section */}
           <div>
-            <h3 className="text-xl font-bold text-gradient mb-4">Jeeto.pk</h3>
+            <img src="/images/jeetopakistan.jpeg" alt="Jeeto Pakistan" className="h-10 rounded mb-3" />
             <p className="text-sm text-gray-400">
               Pakistan's trusted lucky draw platform. Win premium tech gadgets and luxury cars with transparent draws.
             </p>
@@ -31,6 +31,11 @@ export default function Footer() {
               <li>
                 <a href="/dashboard" className="text-gray-400 hover:text-gold transition-colors">
                   My Dashboard
+                </a>
+              </li>
+              <li>
+                <a href="/about" className="text-gray-400 hover:text-gold transition-colors">
+                  About Us
                 </a>
               </li>
               <li>
@@ -67,7 +72,7 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold text-white mb-4">Contact</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li>Email: support@jeeto.pk</li>
+              <li>Email: support@jeetopakistan.com</li>
               <li>Phone: +92 300 1234567</li>
               <li>Hours: Mon-Sat, 9 AM - 6 PM</li>
             </ul>
@@ -92,7 +97,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="text-center text-sm text-gray-500">
-          <p>&copy; 2026 Jeeto.pk. All rights reserved.</p>
+          <p>&copy; 2026 Jeeto Pakistan. All rights reserved.</p>
           <p className="mt-2">Trusted Pakistani Lucky Draw Platform</p>
         </div>
       </div>

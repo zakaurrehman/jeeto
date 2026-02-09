@@ -15,7 +15,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-xl sm:text-2xl font-semibold text-white mb-3">1. Acceptance of Terms</h2>
             <p className="mb-3">
-              By accessing and using Jeeto.pk, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to these terms, please do not use our services.
+              By accessing and using Jeeto Pakistan, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to these terms, please do not use our services.
             </p>
           </section>
 
@@ -84,7 +84,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-xl sm:text-2xl font-semibold text-white mb-3">7. Limitation of Liability</h2>
             <p className="mb-3">
-              Jeeto.pk shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of our services.
+              Jeeto Pakistan shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of our services.
             </p>
             <p className="mb-3">
               We are not responsible for any technical issues, payment gateway failures, or delays beyond our reasonable control.
@@ -108,7 +108,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-xl sm:text-2xl font-semibold text-white mb-3">10. Contact Information</h2>
             <p className="mb-3">
-              If you have any questions about these Terms & Conditions, please contact us through our Contact page or email us at support@jeeto.pk.
+              If you have any questions about these Terms & Conditions, please contact us through our Contact page or email us at support@jeetopakistan.com.
             </p>
           </section>
 

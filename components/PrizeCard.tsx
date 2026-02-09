@@ -18,7 +18,7 @@ export default function PrizeCard({ prize }: PrizeCardProps) {
   const ticketPercentage = (prize.soldTickets / prize.totalTickets) * 100;
 
   return (
-    <div className="card-premium p-6 flex flex-col items-center text-center group hover:border-gold/40">
+    <div className="card-premium glow-hover p-6 flex flex-col items-center text-center group hover:border-gold/40">
       {/* Product Image */}
       <div className="relative w-full h-48 mb-4">
         <Image
@@ -69,7 +69,7 @@ export default function PrizeCard({ prize }: PrizeCardProps) {
       {/* Buy Button */}
       <button
         onClick={() => setIsModalOpen(true)}
-        className="btn-gold w-full"
+        className="btn-gold pulse-glow w-full"
       >
         Buy Ticket
       </button>
